@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import FEACanvas from './components/FEACanvas.vue';
 import ElementInfo from './components/ElementInfo.vue';
 import MeshControls from './components/MeshControls.vue';
+import SectionLibrary from './components/SectionLibrary.vue';
 import { useFEAStore } from './store/fea';
 
 const store = useFEAStore();
@@ -21,21 +22,27 @@ onMounted(() => {
       </h1>
       <div class="text-xs text-slate-500">
         节点: {{ store.model.nodes.length }} |
-        单元: {{ store.model.elements.length }}
+        单元: {{ store.model.elements.length }} |
+        截面库: {{ store.sectionProfiles.length }}
       </div>
     </header>
 
     <!-- Main content -->
     <div class="flex flex-1 overflow-hidden">
       <!-- Canvas area -->
-      <div class="flex-1 p-3" style="width: 75%">
+      <div class="flex-1 p-3" style="width: 60%">
         <FEACanvas />
       </div>
 
       <!-- Right sidebar -->
-      <div class="w-[25%] min-w-[260px] bg-slate-900 border-l border-slate-800 p-3 flex flex-col gap-3 overflow-y-auto">
-        <MeshControls />
-        <ElementInfo />
+      <div class="w-[40%] min-w-[340px] bg-slate-900 border-l border-slate-800 p-3 flex gap-3 overflow-y-auto">
+        <div class="flex-1 flex flex-col gap-3 min-w-0">
+          <MeshControls />
+          <ElementInfo />
+        </div>
+        <div class="flex-1 flex flex-col gap-3 min-w-0">
+          <SectionLibrary />
+        </div>
       </div>
     </div>
 

@@ -37,3 +37,16 @@ export interface FEAResult {
   maxStress: number;
   reactionForces: { nodeId: number; fx: number; fy: number }[];
 }
+
+export interface SectionProfile {
+  id: string;
+  name: string;
+  area: number;
+  youngsModulus: number;
+  material: string;
+  description?: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export type ApplyTarget = 'selected' | 'all' | 'same-material';
